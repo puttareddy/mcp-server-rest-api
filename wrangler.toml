@@ -1,0 +1,19 @@
+name = "mcp-jsonplaceholder"
+main = "src/index.ts"
+compatibility_date = "2025-08-01"
+compatibility_flags = ["nodejs_compat_v2"]
+tsconfig = "tsconfig.json"
+
+[dev]
+ip = "127.0.0.1"
+port = 8789
+
+[durable_objects]
+bindings = [
+  { name = "MCP_OBJECT", class_name = "JsonPlaceholderMCP" }
+]
+
+# NOTE: Using SQLite-enabled DOs for Cloudflare Agents runtime
+[[migrations]]
+tag = "mcp-v4"
+new_sqlite_classes = ["JsonPlaceholderMCP"]
